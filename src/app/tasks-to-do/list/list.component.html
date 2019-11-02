@@ -1,0 +1,41 @@
+<div class="animated bounceInRight">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th width="600" scope="col">DESCRIPCION</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Foto/Imagen/Documento</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="!loading">
+      <tr *ngFor="let task of taskList;let i=index;">
+        <th>{{(i+1)}}</th>
+        <td>{{task.description}}</td>
+        <td>
+          <div class="row">
+            <div class="col-8">
+              <select class="form-control form-control-sm" [(ngModel)]="task.state" name="state" id="state">
+                <option value="null" disabled>Seleccione estado</option>
+                <option value="PENDING" [selected]="task.state === 'PENDING'">Pendiente</option>
+                <option value="FINISH" [selected]="task.state === 'FINISH'">Finalizada</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <button (click)="saveState(task)" class="btn btn-sm btn-primary"><i class="fa fa-save"></i></button>
+            </div>
+          </div>
+        </td>
+        <td class="content-center"><button (click)="donwloadFile(task)" class="btn btn-sm btn-primary"><i
+              class="fa fa-file"></i></button></td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="loading">
+      <tr>
+        <td>
+          <label for="loading">Procesando...</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

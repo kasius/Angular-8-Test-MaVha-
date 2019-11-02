@@ -1,0 +1,26 @@
+<div class="animated bounceInRight">
+  <form [formGroup]="formTask" (submit)="sendForm(formTask.value)">
+    <div class="form-group">
+      <label for="description">Descripción</label>
+      <textarea formControlName="description" placeholder="Ingrese descripción..." name="description"
+        class="form-control" id="description" cols="30" rows="4"></textarea>
+      <small id="description" class="form-text text-muted">Minimo 10 caracteres - maximo 1000 caracteres.</small>
+    </div>
+    <div class="form-group">
+      <label for="state">Estado</label>
+      <select formControlName="state" name="state" class="form-control" id="state">
+        <option value="null" selected disabled>Seleccione estado</option>
+        <option value="PENDING">Pendiente</option>
+        <option value="FINISH">Finalizada</option>
+      </select>
+      <small id="description" class="form-text text-muted">Pendiente - Finalizada.</small>
+    </div>
+    <div class="form-group">
+      <label for="file">Adjuntar Archivo</label>
+      <input type="file" class="form-control-file" id="file" (change)="handleFileInput($event)">
+      <small id="file" class="form-text text-muted">foto/imagen/documento.</small>
+    </div>
+    <label *ngIf="loading" for="loading">Procesando...</label>
+    <button *ngIf="!loading" [disabled]="!formTask.valid" type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+</div>

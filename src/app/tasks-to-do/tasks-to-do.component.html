@@ -1,0 +1,19 @@
+<div class="container animated fadeIn">
+  <div class="row">
+    <div class="col-12 content-center">
+      <h1>MaVha</h1>
+      <h2>Test Técnico Software Engineer</h2>
+      <br><br><br>
+    </div>
+    <div class="offset-4 col-4 content-center">
+      <ul class="list-action">
+        <li><a [routerLink]="['/tasks-to-do/list']">Listar tareas</a></li>
+        <li><a [routerLink]="['/tasks-to-do/form']">Crear tareas</a></li>
+      </ul>
+    </div>
+    <div class="col-12">
+      <br>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
